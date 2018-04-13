@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    if @user = User.find_by(token: @token)
+    if @current_user
       # @user.regenerate_token
       render json: {message: "logout success"}
     else 
@@ -107,10 +107,5 @@ class UsersController < ApplicationController
                            :password_confirmation)
     end
 
-    def current_user
-      #这里要return false 不然会死循环
-      @token = request.headers[:token]
-      return false unless @current_user = User.find_by(token: @token)    
-    end
 
 end

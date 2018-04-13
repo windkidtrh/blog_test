@@ -19,4 +19,8 @@ class UserSerializer < ActiveModel::Serializer
     #:with_token只是名字而已，并不重要
     object.token if instance_options[:with_token]
   end
+  #显示微博的数量
+  attribute :blog_count do
+    object.blogs.count
+  end
 end

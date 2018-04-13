@@ -39,6 +39,11 @@ class User < ApplicationRecord
 
     has_secure_token
     # validates :token, presence: true
-    has_many :blogs
+
+    #dependent: :destroy 的作用是在用户被删除的时候，
+    #把这个用户发布的微博也删除。
+    #这么一来，如果管理员删除了用户，
+    #数据库中就不会出现无主的微博了。
+    has_many :blogs, dependent: :destroy
 
 end
