@@ -13,7 +13,7 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :password
+  attributes :id, :name
 
   attribute :token do
     #:with_token只是名字而已，并不重要
@@ -21,6 +21,14 @@ class UserSerializer < ActiveModel::Serializer
   end
   #显示微博的数量
   attribute :blog_count do
-    object.blogs.count
+    object.blogs.count #if instance_options[:with_count]
+  end
+
+  attribute :follower_count do
+    object.following.count #if instance_options[:with_count]
+  end
+
+  attribute :followed_count do
+    object.followers.count #if instance_options[:with_count]
   end
 end

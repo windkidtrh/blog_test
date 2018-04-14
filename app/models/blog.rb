@@ -17,6 +17,8 @@ class Blog < ApplicationRecord
   validates  :user_id, presence: true 
   validates  :content, presence: true, length: { maximum: 140 }
 
+  #之所以可以这么写，是因为 microposts 表中有识别用户的 user_id
+  #这里跟blog控制器的destroy代码有关联
   belongs_to :user
 
 end
