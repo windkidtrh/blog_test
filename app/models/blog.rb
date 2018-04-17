@@ -21,4 +21,6 @@ class Blog < ApplicationRecord
   #这里跟blog控制器的destroy代码有关联
   belongs_to :user
 
+  # has_many :relationships, dependent: :destroy
+
 end

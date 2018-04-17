@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 
     # 处理更新成功的情况
     if @user[:token] == @token and @user.update_attributes(user_update_params)
-      render json: {message: "update success"}
+      render json: @user
     # 处理token值空或者错误的情况
     elsif @user[:token] != @token
       render json: {error: "请输入正确token"}

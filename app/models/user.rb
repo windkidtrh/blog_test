@@ -46,7 +46,7 @@ class User < ApplicationRecord
     #数据库中就不会出现无主的微博了。
     has_many :blogs,         dependent: :destroy
 
-    has_many :relationships, dependent: :destroy
+    # has_many :relationships, dependent: :destroy
 
     #让用户与微博建立主动关系
     has_many :active_relationships, class_name:  "Relationship",
